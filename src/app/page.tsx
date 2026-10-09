@@ -13,6 +13,8 @@ const PALETTE = [
 
 const TAG_COLORS = ["bg-[#ffd93f]", "bg-[#ff6fae]", "bg-[#5ce0b8]", "bg-[#9dc1ff]"];
 
+const THUMB_COLORS = ["#ffd93f", "#ff6fae", "#5ce0b8", "#9dc1ff"];
+
 export default function Home() {
   const rounds = getRounds();
   const firstRoundHref = rounds[0] ? `/round/${rounds[0].slug}` : "#rounds";
@@ -20,7 +22,14 @@ export default function Home() {
   return (
     <main className="flex-1">
       {/* Screen 1: full-viewport hero */}
-      <section className="flex h-screen flex-col">
+      <section className="relative flex h-screen flex-col overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#ffd93f]/30 blur-3xl" />
+          <div className="absolute -right-24 top-32 h-72 w-72 rounded-full bg-[#ff6fae]/25 blur-3xl" />
+          <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[#5ce0b8]/25 blur-3xl" />
+          <div className="absolute bottom-10 right-1/4 h-56 w-56 rounded-full bg-[#9dc1ff]/25 blur-3xl" />
+        </div>
+
         <SiteNav />
 
         <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
@@ -51,7 +60,7 @@ export default function Home() {
             href={firstRoundHref}
             className="hard hard-press mt-7 flex items-center gap-2 rounded-xl bg-[#141311] px-6 py-3 font-semibold text-[#f3f2ec]"
           >
-            ▸ START PLAYING
+            → START PLAYING
           </Link>
         </div>
 
@@ -104,12 +113,15 @@ export default function Home() {
                         {round.title}
                       </h3>
                       <span className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-bold underline underline-offset-4">
-                        PLAY ROUND ▸
+                        PLAY ROUND →
                       </span>
                     </div>
 
-                    <div className="hard-sm relative mx-auto flex h-28 w-full max-w-[200px] items-center justify-center overflow-hidden rounded-lg bg-white">
-                      <span className="flex h-full w-full items-center justify-center bg-[#141311]/[0.04] font-pixel text-4xl">
+                    <div
+                      className="hard-sm relative mx-auto flex h-28 w-full max-w-[200px] items-center justify-center overflow-hidden rounded-lg"
+                      style={{ background: THUMB_COLORS[i % THUMB_COLORS.length] }}
+                    >
+                      <span className="font-pixel text-5xl text-[#141311]">
                         ?
                       </span>
                     </div>

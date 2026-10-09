@@ -17,7 +17,7 @@ export default function SiteNav({
         href={backHref ?? "/"}
         className="chip hard-press flex items-center gap-1.5 rounded-full bg-[#ffd93f] px-4 py-1.5 text-sm font-semibold"
       >
-        {backHref ? "← ALL ROUNDS" : "● FRIYAY"}
+        {backHref ? "← ALL ROUNDS" : "🎉 FRIYAY"}
       </Link>
 
       {title && (
@@ -38,9 +38,9 @@ export default function SiteNav({
       ) : (
         <a
           href="#rounds"
-          className="chip hidden rounded-full bg-white px-4 py-1.5 text-sm font-semibold sm:block"
+          className="chip hidden rounded-full bg-[#9dc1ff] px-4 py-1.5 text-sm font-semibold sm:block"
         >
-          ▤ ROUNDS
+          📋 ROUNDS
         </a>
       )}
     </header>

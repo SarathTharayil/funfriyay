@@ -192,14 +192,14 @@ export default function QuizViewer({ round }: { round: QuizRoundDetail }) {
               onClick={reveal}
               className="hard hard-press flex items-center gap-2 rounded-xl bg-[#141311] px-7 py-3 font-semibold text-[#f3f2ec]"
             >
-              ▸ REVEAL ANSWER
+              → REVEAL ANSWER
             </button>
           ) : (
             <button
               onClick={goNext}
               className="hard hard-press flex items-center gap-2 rounded-xl bg-[#141311] px-7 py-3 font-semibold text-[#f3f2ec]"
             >
-              {index + 1 === total ? "FINISH ▸" : "NEXT QUESTION ▸"}
+              {index + 1 === total ? "FINISH →" : "NEXT QUESTION →"}
             </button>
           )}
         </div>
