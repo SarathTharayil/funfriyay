@@ -80,10 +80,11 @@ body {
   background: rgba(130, 200, 255, 0.75);
 }
 
-/* Flat pill/tag — same border language as .hard, no shadow, for low-noise use */
+/* Flat pill/tag — same border language as .hard, no shadow, for low-noise use.
+   No background here: every usage supplies its own bg-* utility or inline
+   style, and a background declared in plain CSS would outrank it. */
 .chip {
   border: 2px solid var(--line);
-  background: var(--background);
 }
 
 /* Shared circular icon button, used for nav + prev/next controls everywhere */
