@@ -1,26 +1,110 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f2ec;
+  --foreground: #141311;
+  --line: #141311;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sans);
+  --font-pixel: var(--font-pixel);
+  --font-hand: var(--font-hand);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-image:
+    linear-gradient(rgba(20, 19, 17, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 19, 17, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.font-hand {
+  font-family: var(--font-hand);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
+/* Neobrutalist hard border + offset shadow, used on cards/buttons */
+.hard {
+  border: 2px solid var(--line);
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+.hard-sm {
+  border: 2px solid var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+}
+
+.hard-press {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.hard-press:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--line);
+}
+
+.hard-press:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 var(--line);
+}
+
+/* Washi tape corner strips */
+.tape::before,
+.tape::after {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 22px;
+  background: rgba(255, 221, 120, 0.75);
+  border: 1px solid rgba(20, 19, 17, 0.15);
+  top: -12px;
+}
+
+.tape::before {
+  left: -14px;
+  transform: rotate(-8deg);
+}
+
+.tape::after {
+  right: -14px;
+  transform: rotate(8deg);
+  background: rgba(130, 200, 255, 0.75);
+}
+
+/* Flat pill/tag — same border language as .hard, no shadow, for low-noise use */
+.chip {
+  border: 2px solid var(--line);
+  background: var(--background);
+}
+
+/* Shared circular icon button, used for nav + prev/next controls everywhere */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 2px solid var(--line);
+  background: #fff;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 0 var(--line);
+}
+
+.icon-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }

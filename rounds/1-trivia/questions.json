@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the top-selling product at Walmart?",
+    "options": ["Diapers", "Milk", "Bananas", "Sliced Bread"],
+    "correct": 2
+  },
+  {
+    "question": "What is the name of a duel with three people involved?",
+    "options": ["A triage", "A truel", "A tryst"],
+    "correct": 1
+  },
+  {
+    "question": "What year was the iPhone first released in?",
+    "options": ["2007", "2009", "2010"],
+    "correct": 0
+  },
+  {
+    "question": "What colour is a polar bear's skin?",
+    "options": ["White", "Pink", "Black", "Grey"],
+    "correct": 2
+  },
+  {
+    "question": "What was the first item ever sold on eBay?",
+    "options": ["A used textbook", "A broken laser pointer", "A Beanie Baby", "A toaster"],
+    "correct": 1
+  },
+  {
+    "question": "Bluetooth is named after…",
+    "options": ["A blue LED in early prototypes", "A Viking king", "A Swedish engineer", "A dental brand"],
+    "correct": 1
+  },
+  {
+    "question": "What was the first computer “bug” actually?",
+    "options": ["A typo in code", "A moth", "A loose wire", "A cockroach"],
+    "correct": 1
+  },
+  {
+    "question": "What did the world’s first webcam watch?",
+    "options": ["A goldfish tank", "A coffee pot", "A parking lot", "A cat"],
+    "correct": 1
+  },
+  {
+    "question": "What is the name of the Linux penguin mascot?",
+    "options": ["Pingu", "Tux", "Linus", "Kernel"],
+    "correct": 1
+  },
+  {
+    "question": "Why can’t you name a folder “CON” in Windows?",
+    "options": [
+      "It’s offensive in French",
+      "It’s a reserved name left over from the 1970s and 80s",
+      "Bill Gates didn’t like it",
+      "It crashes the internet"
+    ],
+    "correct": 1
+  }
+]
