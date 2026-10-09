@@ -14,6 +14,7 @@ const IMAGE_EXTENSIONS = new Set([
 ]);
 
 const QUIZ_FILE = "questions.json";
+const STATEMENTS_FILE = "statements.json";
 
 export type QuizQuestion = {
   question: string;
@@ -21,10 +22,16 @@ export type QuizQuestion = {
   correct: number; // index into options
 };
 
+export type Statement = {
+  statement: string;
+  answer: boolean;
+  explanation?: string;
+};
+
 export type RoundSummary = {
   slug: string;
   title: string;
-  type: "image" | "quiz";
+  type: "image" | "quiz" | "truefalse";
   count: number;
   cover: string | null;
 };
@@ -39,7 +46,12 @@ export type QuizRoundDetail = RoundSummary & {
   questions: QuizQuestion[];
 };
 
-export type RoundDetail = ImageRoundDetail | QuizRoundDetail;
+export type TrueFalseRoundDetail = RoundSummary & {
+  type: "truefalse";
+  statements: Statement[];
+};
+
+export type RoundDetail = ImageRoundDetail | QuizRoundDetail | TrueFalseRoundDetail;
 
 function humanize(slug: string): string {
   return slug
@@ -86,6 +98,21 @@ function readQuizFile(dir: string): QuizQuestion[] | null {
   }
 }
 
+function readStatementsFile(dir: string): Statement[] | null {
+  const file = path.join(dir, STATEMENTS_FILE);
+  if (!fs.existsSync(file)) return null;
+  try {
+    const raw = JSON.parse(fs.readFileSync(file, "utf-8"));
+    if (!Array.isArray(raw)) return null;
+    return raw.filter(
+      (s): s is Statement =>
+        s && typeof s.statement === "string" && typeof s.answer === "boolean"
+    );
+  } catch {
+    return null;
+  }
+}
+
 export function getRounds(): RoundSummary[] {
   let entries: fs.Dirent[] = [];
   try {
@@ -98,6 +125,7 @@ export function getRounds(): RoundSummary[] {
     .filter((e) => e.isDirectory())
     .map((e): RoundSummary | null => {
       const dir = path.join(ROUNDS_DIR, e.name);
+
       const quiz = readQuizFile(dir);
       if (quiz) {
         return {
@@ -108,6 +136,18 @@ export function getRounds(): RoundSummary[] {
           cover: null,
         };
       }
+
+      const statements = readStatementsFile(dir);
+      if (statements) {
+        return {
+          slug: e.name,
+          title: humanize(e.name),
+          type: "truefalse",
+          count: statements.length,
+          cover: null,
+        };
+      }
+
       const images = listImageFiles(dir);
       if (images.length === 0) return null;
       return {
@@ -135,6 +175,18 @@ export function getRound(slug: string): RoundDetail | null {
       count: quiz.length,
       cover: null,
       questions: quiz,
+    };
+  }
+
+  const statements = readStatementsFile(dir);
+  if (statements && statements.length > 0) {
+    return {
+      slug: safeSlug,
+      title: humanize(safeSlug),
+      type: "truefalse",
+      count: statements.length,
+      cover: null,
+      statements,
     };
   }
 

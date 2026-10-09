@@ -1,23 +1,14 @@
 import Link from "next/link";
 import { getRounds } from "@/lib/rounds";
 import SiteNav from "@/components/SiteNav";
+import RoundCard from "@/components/RoundCard";
 
 export const dynamic = "force-dynamic";
 
-const PALETTE = [
-  { bg: "bg-[#141311]", text: "text-[#f3f2ec]", tab: "bg-[#3b5bfd]" },
-  { bg: "bg-[#ffd93f]", text: "text-[#141311]", tab: "bg-[#141311] text-[#ffd93f]" },
-  { bg: "bg-[#ff6fae]", text: "text-[#141311]", tab: "bg-[#141311] text-[#ff6fae]" },
-  { bg: "bg-[#5ce0b8]", text: "text-[#141311]", tab: "bg-[#141311] text-[#5ce0b8]" },
-];
-
 const TAG_COLORS = ["bg-[#ffd93f]", "bg-[#ff6fae]", "bg-[#5ce0b8]", "bg-[#9dc1ff]"];
-
-const THUMB_COLORS = ["#ffd93f", "#ff6fae", "#5ce0b8", "#9dc1ff"];
 
 export default function Home() {
   const rounds = getRounds();
-  const firstRoundHref = rounds[0] ? `/round/${rounds[0].slug}` : "#rounds";
 
   return (
     <main className="flex-1">
@@ -52,12 +43,12 @@ export default function Home() {
           </div>
 
           <h2 className="mt-8 text-2xl font-bold leading-snug sm:text-3xl">
-            We ask weird questions so your friends
-            <br className="hidden sm:block" /> put the phones down. 🧩
+            This one&apos;s been a long time coming.
+            <br className="hidden sm:block" /> Here we go, let&apos;s play! 🎉
           </h2>
 
           <Link
-            href={firstRoundHref}
+            href="/play"
             className="hard hard-press mt-7 flex items-center gap-2 rounded-xl bg-[#141311] px-6 py-3 font-semibold text-[#f3f2ec]"
           >
             → START PLAYING
@@ -89,46 +80,9 @@ export default function Home() {
           </div>
         ) : (
           <div className="flex flex-col gap-8">
-            {rounds.map((round, i) => {
-              const palette = PALETTE[i % PALETTE.length];
-              return (
-                <Link
-                  key={round.slug}
-                  href={`/round/${round.slug}`}
-                  className={`hard hard-press relative block overflow-hidden rounded-2xl ${palette.bg} ${palette.text}`}
-                >
-                  <span
-                    className={`hard-sm absolute -top-2 left-6 rounded-md px-3 py-1 text-xs font-bold tracking-wide ${palette.tab}`}
-                  >
-                    ROUND {String(i + 1).padStart(2, "0")}
-                  </span>
-
-                  <div className="grid items-center gap-6 px-6 pb-6 pt-10 sm:grid-cols-[1fr_200px] sm:px-10 sm:pt-12">
-                    <div className="flex flex-col justify-center">
-                      <span className="text-xs font-semibold uppercase tracking-wide opacity-70">
-                        {round.type === "quiz" ? "🎯 quiz" : "🧩 picture round"} ·{" "}
-                        {round.count} {round.count === 1 ? "question" : "questions"}
-                      </span>
-                      <h3 className="mt-2 font-pixel text-3xl sm:text-4xl">
-                        {round.title}
-                      </h3>
-                      <span className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-bold underline underline-offset-4">
-                        PLAY ROUND →
-                      </span>
-                    </div>
-
-                    <div
-                      className="hard-sm relative mx-auto flex h-28 w-full max-w-[200px] items-center justify-center overflow-hidden rounded-lg"
-                      style={{ background: THUMB_COLORS[i % THUMB_COLORS.length] }}
-                    >
-                      <span className="font-pixel text-5xl text-[#141311]">
-                        ?
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+            {rounds.map((round, i) => (
+              <RoundCard key={round.slug} round={round} index={i} className="hard-press" />
+            ))}
           </div>
         )}
       </section>

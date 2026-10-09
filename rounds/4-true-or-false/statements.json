@@ -1,0 +1,71 @@
+[
+  {
+    "statement": "Goldfish have a 3-second memory.",
+    "answer": false,
+    "explanation": "They remember things for months."
+  },
+  {
+    "statement": "A group of crows is called a “murder”.",
+    "answer": true
+  },
+  {
+    "statement": "The Great Wall of China is visible from space with the naked eye.",
+    "answer": false
+  },
+  {
+    "statement": "The first computer programmer was a woman.",
+    "answer": true,
+    "explanation": "Ada Lovelace, in the 1840s."
+  },
+  {
+    "statement": "Lightning never strikes the same place twice.",
+    "answer": false,
+    "explanation": "The Empire State Building is hit about 20–25 times a year."
+  },
+  {
+    "statement": "A day on Venus is longer than a year on Venus.",
+    "answer": true
+  },
+  {
+    "statement": "Bulls get angry because of the colour red.",
+    "answer": false,
+    "explanation": "Bulls can’t see red well; they react to the movement of the cape."
+  },
+  {
+    "statement": "The Eiffel Tower gets taller in summer.",
+    "answer": true,
+    "explanation": "Metal expands in heat, by about 15 cm."
+  },
+  {
+    "statement": "Humans only use 10% of their brain.",
+    "answer": false
+  },
+  {
+    "statement": "Sharks have existed longer than trees.",
+    "answer": true,
+    "explanation": "By roughly 50 million years."
+  },
+  {
+    "statement": "Bananas grow on trees.",
+    "answer": false,
+    "explanation": "A banana plant is technically a giant herb."
+  },
+  {
+    "statement": "A shrimp’s heart is in its head.",
+    "answer": true
+  },
+  {
+    "statement": "Mount Everest is the tallest mountain on Earth measured from base to peak.",
+    "answer": false,
+    "explanation": "Mauna Kea in Hawaii is taller from base to peak, but most of it is underwater."
+  },
+  {
+    "statement": "Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid.",
+    "answer": true
+  },
+  {
+    "statement": "Ctrl+Z was invented before the computer mouse.",
+    "answer": false,
+    "explanation": "The mouse came first, in the 1960s."
+  }
+]

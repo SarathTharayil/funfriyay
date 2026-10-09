@@ -109,3 +109,37 @@ body {
   transform: translateY(0);
   box-shadow: none;
 }
+
+/* Stacked card deck — base tilt/shift comes from --rot / --sx (set inline
+   per card), hover straightens, re-centers, and lifts the card above the
+   rest of the stack so it's fully visible. */
+.stack-card {
+  --rot: 0deg;
+  --sx: 0px;
+  transform: translateX(var(--sx)) rotate(var(--rot));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stack-card:hover {
+  /* Pull the card out to the side (amplifying its own base shift) and up,
+     instead of snapping dead-center — that way it doesn't blanket the
+     whole stack, and the rest of the pile stays reachable to hover next. */
+  transform: translateX(calc(var(--sx) * 2.6)) translateY(-56px) rotate(0deg)
+    scale(1.04);
+  box-shadow: 10px 12px 0 var(--line);
+  z-index: 999 !important;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  70% {
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

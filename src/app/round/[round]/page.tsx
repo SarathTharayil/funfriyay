@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getRound } from "@/lib/rounds";
 import RoundViewer from "./RoundViewer";
 import QuizViewer from "./QuizViewer";
+import TrueFalseViewer from "./TrueFalseViewer";
 
 export default async function RoundPage({
   params,
@@ -15,6 +16,10 @@ export default async function RoundPage({
 
   if (data.type === "quiz") {
     return <QuizViewer round={data} />;
+  }
+
+  if (data.type === "truefalse") {
+    return <TrueFalseViewer round={data} />;
   }
 
   return <RoundViewer round={data} />;
