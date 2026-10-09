@@ -37,15 +37,16 @@ export default function Home() {
             it&apos;s finally
           </span>
 
-          <h1 className="hard mt-3 rounded-2xl border-dashed bg-white px-10 py-6 font-pixel text-5xl tracking-wide sm:text-7xl">
-            FRIYAY
-          </h1>
-
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-            <span className="chip -rotate-2 rounded-full bg-[#ffd93f] px-3 py-1 text-[11px] font-semibold tracking-wide">
+          <div className="relative mt-3">
+            <span className="chip absolute -left-10 top-0 -rotate-6 rounded-full bg-[#ffd93f] px-3 py-1 text-[10px] font-semibold tracking-wide sm:-left-20">
               MADE FOR FRIDAYS
             </span>
-            <span className="chip rotate-2 rounded-full bg-[#5ce0b8] px-3 py-1 text-[11px] font-semibold tracking-wide">
+
+            <h1 className="hard rounded-2xl border-dashed bg-white px-10 py-6 font-pixel text-5xl tracking-wide sm:text-7xl">
+              FRIYAY
+            </h1>
+
+            <span className="chip absolute -right-10 bottom-0 rotate-6 rounded-full bg-[#5ce0b8] px-3 py-1 text-[10px] font-semibold tracking-wide sm:-right-20">
               {rounds.length || 0} ROUND{rounds.length === 1 ? "" : "S"} READY
             </span>
           </div>
